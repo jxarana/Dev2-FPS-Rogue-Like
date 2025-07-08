@@ -1,60 +1,56 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreLayer;
 
-    [SerializeField] int Hp;
+    [SerializeField] int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpVel;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
 
-    [SerializeField] int shootdamage;
+    [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
-
-    [SerializeField] int magMax;
-    [SerializeField] int maxAmmo;
 
     Vector3 moveDir;
     Vector3 playerVel;
 
     int jumpCount;
+    int HPOrig;
+    int speedOrig;
 
     float shootTimer;
-
-    bool hasSlam;
-
-    bool hasDashUnlocked;
-    int dashMax;
-    int dashCount;
-    int magCurrent;
-    int currentAmmo;
-    int hpOrig;
-
+    public bool isGrappling;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        hpOrig = Hp;
+        HPOrig = HP;
+        speedOrig = speed;
+        isGrappling = false;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
         sprint();
 
         movement();
+
     }
 
     void movement()
     {
+
         shootTimer += Time.deltaTime;
 
         if (controller.isGrounded)
@@ -69,22 +65,23 @@ public class playerController : MonoBehaviour
         jump();
 
         controller.Move(playerVel * Time.deltaTime);
-        playerVel.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && shootTimer > shootRate)
+        if (!isGrappling)
         {
-            if (magCurrent > 0)
+            playerVel.y -= gravity * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (!isGrappling && shootTimer > shootRate)
+            {
                 shoot();
-            else
-                reload();
+            }
+            else if (isGrappling)
+            {
+                GetComponent<GrappleHook>()?.ApplySwing();
+            }
         }
-
-        if (Input.GetButton("Reload") && magCurrent != magMax)
-        {
-            reload();
-        }
-
-
     }
 
     void jump()
@@ -113,37 +110,43 @@ public class playerController : MonoBehaviour
         shootTimer = 0;
 
         RaycastHit hit;
+
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
             //Debug.Log(hit.collider.name);
-            IDamage dmg = hit.collider.gameObject.GetComponent<IDamage>();
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
 
             if (dmg != null)
             {
-                dmg.takeDamage(shootdamage);
+                dmg.takeDamage(shootDamage);
             }
         }
     }
 
-    void reload()
+    public void takeDamage(int amount)
     {
-        magCurrent = magMax;
-        currentAmmo -= magMax;
+        HP -= amount;
+
+        updatePlayerUI();
+
+        StartCoroutine(damageFlashScreen());
+
+        if (HP <= 0)
+        {
+            //you dead!
+            gameManager.instance.youLose();
+        }
     }
 
-    public void updatePlayerUi()
+    public void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)Hp / hpOrig;
-        gameManager.instance.ammoBar.fillAmount = (float)magCurrent / magMax;
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
-    void slam()
+    IEnumerator damageFlashScreen()
     {
-
-    }
-
-    void dash()
-    {
-        moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward) * 3;
+        gameManager.instance.playerDamagePanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamagePanel.SetActive(false);
     }
 }
