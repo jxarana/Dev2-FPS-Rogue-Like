@@ -11,7 +11,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuUnlocks;
-    [SerializeField] GameObject menuShop;
+    public GameObject menuShop;
 
     public Image ammoBar;
     public Image playerHPBar;
@@ -155,6 +155,13 @@ public class gameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuLose;
+        menuActive.SetActive(true);
+    }
+
+    public void openShop()
+    {
+        statePause();
+        menuActive = menuShop;
         menuActive.SetActive(true);
     }
 }
