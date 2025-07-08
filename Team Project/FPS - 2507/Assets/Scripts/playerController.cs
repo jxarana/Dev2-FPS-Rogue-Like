@@ -96,7 +96,7 @@ public class playerController : MonoBehaviour
 
             if (dmg != null)
             {
-                dmg.takedamage(shootDamage);
+                dmg.takeDamage(shootDamage);
             }
         }
     }
