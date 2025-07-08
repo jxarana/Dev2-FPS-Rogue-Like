@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38c29cc02f03374499a61f3c7f967528
+guid: 6611eff3de7a00848bff28089c03709d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -1589,3 +1589,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 263814
+  packageName: '[Free Asset] VFX Particles: Fireball Pack'
+  packageVersion: 1.0.0
+  assetPath: Assets/Solodream/VFX_FireballPack/Flipbooks/FireBall04_8x8.exr
+  uploadId: 627543

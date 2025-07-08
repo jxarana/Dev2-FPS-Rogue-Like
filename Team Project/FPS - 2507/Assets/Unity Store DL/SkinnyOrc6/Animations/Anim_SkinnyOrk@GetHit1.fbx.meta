@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2dba2a472982f9045bb5f1102fe07ce2
+guid: f4f3d3bed07549343b37a0a9121ef720
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@GetHit1.fbx
+  uploadId: 625859

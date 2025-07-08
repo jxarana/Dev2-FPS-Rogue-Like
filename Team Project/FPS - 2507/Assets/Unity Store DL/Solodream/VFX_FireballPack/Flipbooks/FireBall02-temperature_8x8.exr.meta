@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b2489a8647b1ea4b8d21535bba5c9fe
+guid: acedb647a2538ca4d91c06a474261da2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -1589,3 +1589,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 263814
+  packageName: '[Free Asset] VFX Particles: Fireball Pack'
+  packageVersion: 1.0.0
+  assetPath: Assets/Solodream/VFX_FireballPack/Flipbooks/FireBall02-temperature_8x8.exr
+  uploadId: 627543

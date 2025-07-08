@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 31a9e667ec1c23e438de613353b56a3c
+guid: c4e8eb8e30d6b244285d7dce52b29bd3
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@WalkBackHandSword1.fbx
+  uploadId: 625859

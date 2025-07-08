@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57d8719d5a51d014ebc7db1f22b3d8d0
+guid: 4cf9a2e24db6d714ba939cfaf6aefe07
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Armor_Normal.tga
+  uploadId: 625859

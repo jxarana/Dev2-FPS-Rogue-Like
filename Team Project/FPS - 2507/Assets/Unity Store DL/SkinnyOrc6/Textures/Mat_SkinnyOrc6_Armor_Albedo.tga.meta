@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d19f963161c6cf44bade8ab5b7b601c
+guid: 902ac15e16eea734a9198b342a8ba05e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Armor_Albedo.tga
+  uploadId: 625859

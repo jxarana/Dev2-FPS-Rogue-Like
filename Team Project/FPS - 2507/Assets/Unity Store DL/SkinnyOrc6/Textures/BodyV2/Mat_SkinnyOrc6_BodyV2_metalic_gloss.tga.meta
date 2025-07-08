@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac49d167f4d113b42a5ee15cc062b751
+guid: 0815e0286c7825445b1c836c62824309
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/BodyV2/Mat_SkinnyOrc6_BodyV2_metalic_gloss.tga
+  uploadId: 625859

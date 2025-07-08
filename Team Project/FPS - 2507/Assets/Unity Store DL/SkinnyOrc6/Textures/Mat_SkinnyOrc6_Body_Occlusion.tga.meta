@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28c5e710f5d9e294886df8b1a9dc1a8e
+guid: ec15742a58fa7e54ea04472d4476677b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Body_Occlusion.tga
+  uploadId: 625859

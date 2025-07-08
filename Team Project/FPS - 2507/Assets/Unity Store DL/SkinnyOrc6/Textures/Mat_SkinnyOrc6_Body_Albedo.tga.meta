@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd30246ca9644064db29b95890cf9747
+guid: cdafaf026d611424785682c439448ca9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Body_Albedo.tga
+  uploadId: 625859

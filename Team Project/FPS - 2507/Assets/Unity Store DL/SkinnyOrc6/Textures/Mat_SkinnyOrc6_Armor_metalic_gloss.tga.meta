@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 256add3d4e8642544a170b5d836d3b81
+guid: a83e188cbc407b948950521434d0cd59
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Armor_metalic_gloss.tga
+  uploadId: 625859

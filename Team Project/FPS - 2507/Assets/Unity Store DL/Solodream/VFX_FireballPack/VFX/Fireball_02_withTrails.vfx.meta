@@ -1,7 +1,14 @@
 fileFormatVersion: 2
-guid: 317b88131246ff54d9d136ca7efd687a
+guid: bf7e3c40f8fdc1844ac5d58a328c429c
 VisualEffectImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 263814
+  packageName: '[Free Asset] VFX Particles: Fireball Pack'
+  packageVersion: 1.0.0
+  assetPath: Assets/Solodream/VFX_FireballPack/VFX/Fireball_02_withTrails.vfx
+  uploadId: 627543

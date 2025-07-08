@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4a75e2973b98c347b8af723f631dc0b
+guid: 51ef9bb77cb38ee4f85dd4b81c095756
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@Idle1OneHandSword1.fbx
+  uploadId: 625859

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: babcd8d8caa263e428ea7bf45bb5fc53
+guid: f467a911b66133745b61b0aac0b28722
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@Death3.fbx
+  uploadId: 625859

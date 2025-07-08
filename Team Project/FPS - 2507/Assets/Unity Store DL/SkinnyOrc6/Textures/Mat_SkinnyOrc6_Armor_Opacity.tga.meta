@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de212a0babf088543892a348b3b1222f
+guid: d80ac401d2de3584180988157f252164
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,3 +121,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Textures/Mat_SkinnyOrc6_Armor_Opacity.tga
+  uploadId: 625859

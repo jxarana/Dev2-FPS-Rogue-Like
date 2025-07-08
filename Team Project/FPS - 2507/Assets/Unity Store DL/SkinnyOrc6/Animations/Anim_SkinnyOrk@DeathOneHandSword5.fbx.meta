@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88f01309938e17848a57a2cfe2501405
+guid: 37dd3fe730c697c41a305795a20d2adc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@DeathOneHandSword5.fbx
+  uploadId: 625859

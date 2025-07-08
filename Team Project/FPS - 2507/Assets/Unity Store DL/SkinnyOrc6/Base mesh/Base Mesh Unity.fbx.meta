@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0ea0e12f04b5564fb0c957efc680457
+guid: 9680467b79707dd48b384c3aa7bc85fd
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Base mesh/Base Mesh Unity.fbx
+  uploadId: 625859

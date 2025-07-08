@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d3decbcde777fa4f8171df9aa3e3745
+guid: 86dc06ed79ee4f7418df1252a2f87a4f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -104,3 +104,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Animations/Anim_SkinnyOrk@AttackOneHandSword8.fbx
+  uploadId: 625859

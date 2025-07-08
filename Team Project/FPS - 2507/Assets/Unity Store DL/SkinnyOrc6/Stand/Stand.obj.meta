@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c50150d8d14fa0247a4e40fc7267b836
+guid: a03fe48faa6d4744fae5485e0ba7a7a2
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -100,3 +100,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 270018
+  packageName: SkinnyOrc6
+  packageVersion: 1.0
+  assetPath: Assets/SkinnyOrc6/Stand/Stand.obj
+  uploadId: 625859
