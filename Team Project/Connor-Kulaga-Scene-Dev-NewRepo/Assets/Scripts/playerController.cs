@@ -71,9 +71,16 @@ public class playerController : MonoBehaviour, IDamage
             playerVel.y -= gravity * Time.deltaTime;
         }
 
-        if(Input.GetButton("Fire1") && shootTimer > shootRate)
+        if(Input.GetKey(KeyCode.LeftControl))
         {
-            shoot();
+            if(!isGrappling && shootTimer > shootRate)
+            {
+                shoot();
+            }
+            else if(isGrappling)
+            {
+                GetComponent<GrappleHook>()?.ApplySwing();
+            }
         }
     }
 

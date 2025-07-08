@@ -83,5 +83,23 @@ public class GrappleHook : MonoBehaviour
         player.isGrappling = true;
     }
 
+    public void ApplySwing()
+    {
+        if(!isGrappling)
+        {
+            return;
+        }
 
+        float horizontal = Input.GetAxis("Horizontal");
+
+        if(Mathf.Abs(horizontal) > 0.1f)
+        {
+            Vector3 toPoint = (grapplePoint - transform.position).normalized;
+            Vector3 swingDir = Vector3.Cross(toPoint, Vector3.up).normalized;
+
+            swingDir *= horizontal;
+
+            controller.Move(swingDir * pullSpeed * Time.deltaTime);
+        }
+    }
 }
