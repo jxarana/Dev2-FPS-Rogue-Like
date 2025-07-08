@@ -10,7 +10,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuUnlocks;
+    [SerializeField] GameObject menuShop;
 
+    public Image ammoBar;
     public Image playerHPBar;
     public GameObject playerDamagePanel;
 
@@ -21,6 +24,9 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
+    int levelCount;
+    int upGradePoints;
+    int cash;
 
     // Spawn point for the player
     public Transform playerSpawnPoint;

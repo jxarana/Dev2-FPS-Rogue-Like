@@ -1,19 +1,24 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class playerController : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreLayer;
 
+    [SerializeField] int Hp;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpVel;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
 
-    [SerializeField] int shootDamage;
+    [SerializeField] int shootdamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+
+    [SerializeField] int magMax;
+    [SerializeField] int maxAmmo;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -22,10 +27,20 @@ public class playerController : MonoBehaviour
 
     float shootTimer;
 
+    bool hasSlam;
+
+    bool hasDashUnlocked;
+    int dashMax;
+    int dashCount;
+    int magCurrent;
+    int currentAmmo;
+    int hpOrig;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        hpOrig = Hp;
     }
 
     // Update is called once per frame
@@ -58,8 +73,18 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButton("Fire1") && shootTimer > shootRate)
         {
-            shoot();
+            if (magCurrent > 0)
+                shoot();
+            else
+                reload();
         }
+
+        if (Input.GetButton("Reload") && magCurrent != magMax)
+        {
+            reload();
+        }
+
+
     }
 
     void jump()
@@ -91,13 +116,34 @@ public class playerController : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
             //Debug.Log(hit.collider.name);
-
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            IDamage dmg = hit.collider.gameObject.GetComponent<IDamage>();
 
             if (dmg != null)
             {
-                dmg.takeDamage(shootDamage);
+                dmg.takeDamage(shootdamage);
             }
         }
+    }
+
+    void reload()
+    {
+        magCurrent = magMax;
+        currentAmmo -= magMax;
+    }
+
+    public void updatePlayerUi()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)Hp / hpOrig;
+        gameManager.instance.ammoBar.fillAmount = (float)magCurrent / magMax;
+    }
+
+    void slam()
+    {
+
+    }
+
+    void dash()
+    {
+        moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward) * 3;
     }
 }
