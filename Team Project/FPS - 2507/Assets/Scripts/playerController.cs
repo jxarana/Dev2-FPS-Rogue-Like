@@ -27,9 +27,9 @@ public class playerController : MonoBehaviour
 
     float shootTimer;
 
-    bool hasSlam;
-
+    bool hasSlamunlocked;
     bool hasDashUnlocked;
+
     int dashMax;
     int dashCount;
     int magCurrent;
