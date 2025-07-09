@@ -12,6 +12,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpVel;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+    [SerializeField] int deadHeight;
 
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
@@ -79,6 +80,11 @@ public class playerController : MonoBehaviour, IDamage
         if (!isGrappling)
         {
             playerVel.y -= gravity * Time.deltaTime;
+        }
+
+        if(gameManager.instance.player.transform.position.y < deadHeight)
+        {
+            gameManager.instance.youLose();
         }
 
         if (Input.GetKey(KeyCode.LeftControl))
