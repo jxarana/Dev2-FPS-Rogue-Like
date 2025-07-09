@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreLayer;
 
-    [SerializeField] int HP;
+    [SerializeField] int HPOrig;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpVel;
@@ -41,7 +41,7 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 playerVel;
 
     int jumpCount;
-    int HPOrig;
+    int HP;
     int speedOrig;
 
     float shootTimer;
@@ -53,7 +53,7 @@ public class playerController : MonoBehaviour, IDamage
     
     int magCurrent;
     int currentAmmo;
-    int hpOrig;
+   
     public int dmgUp;
 
    
@@ -63,9 +63,11 @@ public class playerController : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        HPOrig = HP;
+        HP = HPOrig;
         speedOrig = speed;
         isGrappling = false;
+        magCurrent = magMax;
+        currentAmmo = maxAmmo;
         updatePlayerUI();
     }
 
@@ -122,6 +124,54 @@ public class playerController : MonoBehaviour, IDamage
                 GetComponent<GrappleHook>()?.ApplySwing();
             }
         }
+
+        /*
+         if(Input.GetButtonDown("Grapple"))
+        {
+            if(!isGrappling)    
+            {
+             GetComponent<GrappleHook>()?.ApplySwing();     If dont want the player to be able to grapple while grappling  
+            }
+            
+
+            GetComponent<GrappleHook>()?.ApplySwing();         If it doesnt matter
+
+
+
+
+        }
+         
+         
+         
+         
+         
+         
+         */
+
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if(shootTimer > shootRate && magCurrent > 0)
+            {
+                shoot();
+                updatePlayerUI();
+            }
+            else if(shootTimer > shootRate && magCurrent == 0)
+            {
+                reload();
+                updatePlayerUI();
+            }
+        }
+
+        if(Input.GetButtonDown("Reload"))
+        {
+            if(magCurrent != magMax)
+            {
+                reload();
+                updatePlayerUI();
+            }
+        }
+
     }
 
     void jump()
@@ -148,12 +198,12 @@ public class playerController : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
-
+        magCurrent--;
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
-            //Debug.Log(hit.collider.name);
+            Debug.Log(hit.collider.name);
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
             if (dmg != null)
@@ -184,7 +234,6 @@ public class playerController : MonoBehaviour, IDamage
         gameManager.instance.ammoBar.fillAmount = (float)magCurrent / magMax;
         gameManager.instance.inMagCount.text = magCurrent.ToString();
         gameManager.instance.currAmmoCount.text = currentAmmo.ToString();
-        
 
 
     }
@@ -199,13 +248,17 @@ public class playerController : MonoBehaviour, IDamage
 
     void reload()
     {
-        magCurrent = magMax;
-        currentAmmo -= magMax;
+        if (currentAmmo > 0)
+        {
+            magCurrent = magMax;
+            currentAmmo -= magMax;
+        }
     }
 
     public void replenishAmmo()
     {
-        currentAmmo = maxAmmo;    
+        currentAmmo = maxAmmo;
+        updatePlayerUI();   
     }
 
     void dash()
@@ -215,7 +268,8 @@ public class playerController : MonoBehaviour, IDamage
 
     public void  healhp(int ammount)
     {
-       HP = Mathf.Min(HP + ammount, hpOrig);
+        HP = Mathf.Min(HP + ammount, HPOrig);
+        updatePlayerUI();
     }
 
     public void dashUnlock()
@@ -245,7 +299,7 @@ public class playerController : MonoBehaviour, IDamage
 
     public void speedUp()
     {
-        speed = speed * 5 / 100;
+        speed += 1;
         speedOrig = speed;
     }
 

@@ -35,6 +35,7 @@ public class gameManager : MonoBehaviour
 
     int gameGoalCount;
     int levelCount;
+
     
 
     // Spawn point for the player
@@ -86,11 +87,12 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause)
+            else if (menuActive == menuPause || menuActive == menuShop)
             {
                 stateUnpause();
             }
         }
+        
     }
 
     void SpawnEnemies()
@@ -150,13 +152,34 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
+        /*
+         if(gameGoalCount <= 0 && levelCount == x)
 
+           statePause();
+            menuActive = menuWin;
+            menuActive.SetActive(true);
+         
+         
+         
+         */
         if (gameGoalCount <= 0)
         {
             // you win!
             statePause();
             menuActive = menuWin;
             menuActive.SetActive(true);
+            /*
+             *  statePause();   
+                menuActive = menuUlocks;
+                menuActive.setActive(true);
+        
+             
+             
+             
+             */
+
+
+
         }
     }
 
@@ -170,8 +193,13 @@ public class gameManager : MonoBehaviour
     public void openShop()
     {
         statePause();
+        goldCount.text = playerScript.goldCount.ToString();
+        unlockCount.text = playerScript.upgradePoints.ToString();
         menuActive = menuShop;
         menuActive.SetActive(true);
     }
+
+   
+
 
 }

@@ -30,6 +30,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.dmgUp++;
             gameManager.instance.playerScript.goldCount -= 80;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     }
 
@@ -39,6 +40,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.replenishAmmo();
             gameManager.instance.playerScript.goldCount -= 50;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     }//done
 
@@ -48,6 +50,7 @@ public class buttonFunctions : MonoBehaviour
         { 
             gameManager.instance.playerScript.healhp(25);
             gameManager.instance.playerScript.goldCount -= 20;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     } // done
     public void heal50()
@@ -56,6 +59,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.healhp(50);
             gameManager.instance.playerScript.goldCount -= 45;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     } // done
     public void heal75()
@@ -64,13 +68,11 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.healhp(75);
             gameManager.instance.playerScript.goldCount -= 70;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     } //done
 
-    public void close()
-    {
-        gameManager.instance.stateUnpause();
-    } //done
+    
 
     public void unlockDash() //done
     {
@@ -106,6 +108,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.dashCountUp();
             gameManager.instance.playerScript.goldCount -= 30;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     }
 
@@ -115,6 +118,7 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.jumpCountUp();
             gameManager.instance.playerScript.goldCount -= 45;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
         }
     }
 
@@ -124,6 +128,8 @@ public class buttonFunctions : MonoBehaviour
         {
             gameManager.instance.playerScript.speedUp();
             gameManager.instance.playerScript.goldCount -= 20;
+            gameManager.instance.goldCount.text = gameManager.instance.playerScript.goldCount.ToString();
+            
         }
     }
 
