@@ -9,6 +9,7 @@ public class GrappleHook : MonoBehaviour
     [SerializeField] float maxGrappleDistance;
     [SerializeField] playerController player;
     [SerializeField] LineRenderer lr;
+    [SerializeField] Transform grappleOrigin;
     public LayerMask grappleLayer;
 
     bool isGrappling;
@@ -35,7 +36,7 @@ public class GrappleHook : MonoBehaviour
         if (isGrappling)
         {
             lr.enabled = true;
-            lr.SetPosition(0, transform.position);
+            lr.SetPosition(0, grappleOrigin.position);
             lr.SetPosition(1, grapplePoint);
             timer += Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
