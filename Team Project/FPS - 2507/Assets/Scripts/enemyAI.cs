@@ -9,6 +9,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
 
+    [SerializeField] int goldDropped;
     [SerializeField] int HP;
     [SerializeField] int fov;
     [SerializeField] int faceTargetSpeed;
@@ -139,6 +140,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            gameManager.instance.playerScript.goldCount += goldDropped;
             gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }

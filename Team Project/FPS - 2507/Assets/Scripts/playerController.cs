@@ -1,4 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
@@ -12,10 +15,27 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpVel;
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
+    [SerializeField] int dashMax;
+    public int goldCount;
+    public int upgradePoints;
 
     [SerializeField] int shootDamage;
     [SerializeField] float shootRate;
     [SerializeField] int shootDist;
+    [SerializeField] int magMax;
+    [SerializeField] int maxAmmo;
+
+  
+    int dashCount;
+    public float dashSpeed;
+    public float dashDuration;
+    public float dashCooldown;
+    float dashCooldownTimer;
+    bool isDashing;
+    float dashTimeLeft;
+    private Vector3 dashDirection;
+
+
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -25,7 +45,20 @@ public class playerController : MonoBehaviour, IDamage
     int speedOrig;
 
     float shootTimer;
+
+    bool hasSlamunlocked = false;
+    bool hasDashUnlocked = false;
+    bool hasGrappleUnlocked = false;
+
+    
+    int magCurrent;
+    int currentAmmo;
+    int hpOrig;
+    public int dmgUp;
+
+   
     public bool isGrappling;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,6 +90,7 @@ public class playerController : MonoBehaviour, IDamage
         {
             playerVel = Vector3.zero;
             jumpCount = 0;
+            dashCount = 0;
         }
 
         moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
@@ -73,9 +107,15 @@ public class playerController : MonoBehaviour, IDamage
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            if (!isGrappling && shootTimer > shootRate)
+            if (!isGrappling && shootTimer > shootRate && magCurrent < 0)
             {
                 shoot();
+                updatePlayerUI();
+            }
+            else if(!isGrappling && shootTimer > shootRate && magCurrent == 0)
+            {
+                reload();
+                updatePlayerUI();
             }
             else if (isGrappling)
             {
@@ -118,7 +158,7 @@ public class playerController : MonoBehaviour, IDamage
 
             if (dmg != null)
             {
-                dmg.takeDamage(shootDamage);
+                dmg.takeDamage(shootDamage + dmgUp);
             }
         }
     }
@@ -141,6 +181,12 @@ public class playerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.ammoBar.fillAmount = (float)magCurrent / magMax;
+        gameManager.instance.inMagCount.text = magCurrent.ToString();
+        gameManager.instance.currAmmoCount.text = currentAmmo.ToString();
+        
+
+
     }
 
     IEnumerator damageFlashScreen()
@@ -149,4 +195,75 @@ public class playerController : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerDamagePanel.SetActive(false);
     }
+
+
+    void reload()
+    {
+        magCurrent = magMax;
+        currentAmmo -= magMax;
+    }
+
+    public void replenishAmmo()
+    {
+        currentAmmo = maxAmmo;    
+    }
+
+    void dash()
+    {
+        
+    }
+
+    public void  healhp(int ammount)
+    {
+       HP = Mathf.Min(HP + ammount, hpOrig);
+    }
+
+    public void dashUnlock()
+    {
+        hasDashUnlocked = true;
+    }
+
+    public void grappleUnlock()
+    {
+        hasGrappleUnlocked = true;
+    }
+
+    public void slamUnlock()
+    {
+        hasSlamunlocked = true;
+    }
+
+    public void dashCountUp()
+    {
+        dashMax += 1;
+    }
+
+    public void jumpCountUp()
+    {
+        jumpMax += 1;
+    }
+
+    public void speedUp()
+    {
+        speed = speed * 5 / 100;
+        speedOrig = speed;
+    }
+
+    public bool dashReturn()
+    {
+        return hasDashUnlocked;
+    }
+
+    public bool grappleReturn()
+    {
+        return hasGrappleUnlocked;
+    }
+
+    public bool slamReturn() {
+
+        return hasSlamunlocked;
+    }
+
+
+
 }
