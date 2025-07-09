@@ -61,7 +61,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000006, z: 0.99999964}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2134825230101738570}
+  - {fileID: 2280021606986667241}
   - {fileID: 3956161461613756359}
   m_Father: {fileID: 1008441159928820493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -507,6 +507,38 @@ Transform:
   - {fileID: 6663524176071658797}
   m_Father: {fileID: 9171456927298476739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2525074379045665733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2280021606986667241}
+  m_Layer: 0
+  m_Name: PlayerCamPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2280021606986667241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525074379045665733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000002328306, y: -0.99999136, z: 0.00000055879343, w: -0.004163411}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2134825230101738570}
+  m_Father: {fileID: 3482490945824583372}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2566910649665610056
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,12 +632,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3050381586013792784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000055879343, y: 0.0041631428, z: -0.0000000022992022, w: -0.99999136}
-  m_LocalPosition: {x: 0, y: 0.07993703, z: -0.016833074}
+  m_LocalRotation: {x: 5.6141078e-11, y: -1, z: -0.000000007450892, w: 0.00000026822084}
+  m_LocalPosition: {x: 0, y: 0.2, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3482490945824583372}
+  m_Father: {fileID: 2280021606986667241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7680927198840941566
 MonoBehaviour:
@@ -816,8 +848,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3436468487627862783}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0000000037252899, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1406,7 +1438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6291042222491107091}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9999914, z: -0, w: -0.0041634114}
+  m_LocalRotation: {x: 0, y: 0.99999136, z: -0, w: -0.0041624466}
   m_LocalPosition: {x: 53.025433, y: 0, z: 30.575024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1431,23 +1463,25 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  HP: 10
+  HP: 5
   speed: 5
   sprintMod: 3
   jumpVel: 12
   jumpMax: 2
   gravity: 30
-  dashMax: 1
-  goldCount: 30
-  upgradePoints: 20
-  shootDamage: 6
+  dashMax: 0
+  camPivot: {fileID: 2280021606986667241}
+  mouseSensitivity: 3
+  goldCount: 0
+  upgradePoints: 0
+  shootDamage: 1
   shootRate: 0.25
   shootDist: 12
   magMax: 5
-  maxAmmo: 30
-  dashSpeed: 12
-  dashDuration: 5
-  dashCooldown: 4
+  maxAmmo: 20
+  dashSpeed: 0
+  dashDuration: 0
+  dashCooldown: 0
   dmgUp: 0
   isGrappling: 0
 --- !u!95 &3842411706401111782
@@ -1496,7 +1530,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6304396418483317204
 GameObject:
   m_ObjectHideFlags: 0

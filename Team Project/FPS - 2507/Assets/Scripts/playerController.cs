@@ -1,7 +1,4 @@
-using JetBrains.Annotations;
 using System.Collections;
-using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
@@ -16,6 +13,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpMax;
     [SerializeField] int gravity;
     [SerializeField] int dashMax;
+    [SerializeField] Transform camPivot;
+    [SerializeField] float mouseSensitivity = 3f;
+
     public int goldCount;
     public int upgradePoints;
 
@@ -45,6 +45,7 @@ public class playerController : MonoBehaviour, IDamage
     int speedOrig;
 
     float shootTimer;
+    float xRotation = 0f;
 
     bool hasSlamunlocked = false;
     bool hasDashUnlocked = false;
@@ -78,8 +79,8 @@ public class playerController : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
         sprint();
-
         movement();
+        handleCamera();
 
     }
 
@@ -317,7 +318,16 @@ public class playerController : MonoBehaviour, IDamage
 
         return hasSlamunlocked;
     }
+    void handleCamera()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
+        transform.Rotate(Vector3.up * mouseX);
 
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -60f, 60f);
+        camPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
 
 }
