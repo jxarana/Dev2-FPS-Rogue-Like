@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuUnlocks;
+
+    public  TMP_Text goldCount;
+    public  TMP_Text unlockCount;
+
+    public TMP_Text inMagCount;
+    public TMP_Text currAmmoCount;
+
+
+
+
     public GameObject menuShop;
 
     public Image ammoBar;
@@ -25,8 +36,8 @@ public class gameManager : MonoBehaviour
 
     int gameGoalCount;
     int levelCount;
-    int upGradePoints;
-    int cash;
+
+    
 
     // Spawn point for the player
     public Transform playerSpawnPoint;
@@ -77,11 +88,12 @@ public class gameManager : MonoBehaviour
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if (menuActive == menuPause)
+            else if (menuActive == menuPause || menuActive == menuShop)
             {
                 stateUnpause();
             }
         }
+        
     }
 
     void SpawnEnemies()
@@ -141,13 +153,34 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
+        /*
+         if(gameGoalCount <= 0 && levelCount == x)
 
+           statePause();
+            menuActive = menuWin;
+            menuActive.SetActive(true);
+         
+         
+         
+         */
         if (gameGoalCount <= 0)
         {
             // you win!
             statePause();
             menuActive = menuWin;
             menuActive.SetActive(true);
+            /*
+             *  statePause();   
+                menuActive = menuUlocks;
+                menuActive.setActive(true);
+        
+             
+             
+             
+             */
+
+
+
         }
     }
 
@@ -161,7 +194,13 @@ public class gameManager : MonoBehaviour
     public void openShop()
     {
         statePause();
+        goldCount.text = playerScript.goldCount.ToString();
+        unlockCount.text = playerScript.upgradePoints.ToString();
         menuActive = menuShop;
         menuActive.SetActive(true);
     }
+
+   
+
+
 }
