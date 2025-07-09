@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuUnlocks;
+    public  TMP_Text goldCount;
+    public  TMP_Text unlockCount;
+
+    public TMP_Text inMagCount;
+    public TMP_Text currAmmoCount;
+
+
+
+
     public GameObject menuShop;
 
     public Image ammoBar;
@@ -25,8 +35,7 @@ public class gameManager : MonoBehaviour
 
     int gameGoalCount;
     int levelCount;
-    int upGradePoints;
-    int cash;
+    
 
     // Spawn point for the player
     public Transform playerSpawnPoint;
@@ -164,4 +173,5 @@ public class gameManager : MonoBehaviour
         menuActive = menuShop;
         menuActive.SetActive(true);
     }
+
 }
