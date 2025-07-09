@@ -1431,17 +1431,16 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  Hp: 5
+  HP: 5
   speed: 5
   sprintMod: 3
   jumpVel: 12
   jumpMax: 2
   gravity: 30
-  shootdamage: 1
+  shootDamage: 0
   shootRate: 0.25
   shootDist: 12
-  magMax: 5
-  maxAmmo: 20
+  isGrappling: 0
 --- !u!95 &3842411706401111782
 Animator:
   serializedVersion: 7
