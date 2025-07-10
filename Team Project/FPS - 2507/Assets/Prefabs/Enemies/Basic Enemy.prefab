@@ -2195,7 +2195,7 @@ MonoBehaviour:
   shootPos: {fileID: 4188377515715764064}
   headPos: {fileID: 3176997715959273163}
   anim: {fileID: 4436404700428490623}
-  goldDropped: 2
+  goldDropped: 40
   HP: 3
   fov: 90
   faceTargetSpeed: 30
