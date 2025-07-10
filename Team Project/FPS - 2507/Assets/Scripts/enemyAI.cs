@@ -45,7 +45,6 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-
         if (agent.remainingDistance < 0.01f)
         {
             roamTimer += Time.deltaTime;
