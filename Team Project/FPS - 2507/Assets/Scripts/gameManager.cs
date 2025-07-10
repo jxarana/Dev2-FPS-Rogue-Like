@@ -33,6 +33,7 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
 
     float timeScaleOrig;
+    float timeScaleNew;
 
     int gameGoalCount;
     int levelCount;
@@ -136,6 +137,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = 0;
+        timeScaleNew = Time.timeScale;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
