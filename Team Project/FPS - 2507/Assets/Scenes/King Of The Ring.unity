@@ -685,6 +685,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1826274449887941595, guid: f487c8c9939e95e42abd6fa80df42be5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7a3d187b6b2495044ba1797b51c5a06c, type: 2}
+    - target: {fileID: 1826274449887941595, guid: f487c8c9939e95e42abd6fa80df42be5, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
@@ -3932,6 +3936,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6577672709897900317, guid: 06b3d9e08e1358a488a429a75ecda672, type: 3}
   m_PrefabInstance: {fileID: 1430053242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1191077659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191077661}
+  - component: {fileID: 1191077660}
+  m_Layer: 0
+  m_Name: Navigation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1191077660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191077659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1023
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 1
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 0.1
+  m_NavMeshData: {fileID: 23800000, guid: 70c67fc08a528cf4db3d1cd0612487cf, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &1191077661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191077659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.12675, y: 0, z: -16.80434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225683206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6193,6 +6261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 5949777708253811972, guid: f51397a5e729f6d459f03ec7a5d64fcc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7886712605514855769, guid: f51397a5e729f6d459f03ec7a5d64fcc, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -6225,3 +6297,4 @@ SceneRoots:
   - {fileID: 790443533}
   - {fileID: 1276900010}
   - {fileID: 1420041728}
+  - {fileID: 1191077661}
