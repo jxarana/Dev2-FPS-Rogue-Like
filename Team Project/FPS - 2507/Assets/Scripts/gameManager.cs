@@ -12,6 +12,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuUnlocks;
+    [SerializeField] TMP_Text gameGoalCountText;
 
     public  TMP_Text goldCount;
     public  TMP_Text unlockCount;
@@ -153,6 +154,7 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
+        gameGoalCountText.text = gameGoalCount.ToString("F0");
         /*
          if(gameGoalCount <= 0 && levelCount == x)
 
