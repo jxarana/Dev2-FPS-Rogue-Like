@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour, IDamage
 {
@@ -25,6 +26,15 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int magMax;
     [SerializeField] int maxAmmo;
 
+    [SerializeField] float mantleCheckDist = 1f;
+    [SerializeField] float mantleHeight = 1.5f;
+    [SerializeField] float mantleDuration = 0.3f;
+    [SerializeField] LayerMask mantleLayer;
+
+    bool isMantling = false;
+    Vector3 mantleStartPos;
+    Vector3 mantleEndPos;
+    float mantleTimer;
   
     int dashCount;
     public float dashSpeed;
@@ -57,10 +67,9 @@ public class playerController : MonoBehaviour, IDamage
    
     public int dmgUp;
 
-   
-    public bool isGrappling;
-    
 
+    public bool isGrappling;
+  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -75,17 +84,30 @@ public class playerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        if(isMantling)
+        {
+            MantleMove();
+            return;
+        }
 
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
         sprint();
         movement();
+        if(!controller.isGrounded && Input.GetKey(KeyCode.Space))
+        {
+            TryMantle();
+        }
         handleCamera();
 
     }
 
     void movement()
     {
+        if( isMantling)
+        {
+            return;
+        }
 
         shootTimer += Time.deltaTime;
 
@@ -108,56 +130,14 @@ public class playerController : MonoBehaviour, IDamage
             playerVel.y -= gravity * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            if (!isGrappling && shootTimer > shootRate && magCurrent < 0)
-            {
-                shoot();
-                updatePlayerUI();
-            }
-            else if(!isGrappling && shootTimer > shootRate && magCurrent == 0)
-            {
-                reload();
-                updatePlayerUI();
-            }
-            else if (isGrappling)
-            {
-                GetComponent<GrappleHook>()?.ApplySwing();
-            }
-        }
-
-        /*
-         if(Input.GetButtonDown("Grapple"))
-        {
-            if(!isGrappling)    
-            {
-             GetComponent<GrappleHook>()?.ApplySwing();     If dont want the player to be able to grapple while grappling  
-            }
-            
-
-            GetComponent<GrappleHook>()?.ApplySwing();         If it doesnt matter
-
-
-
-
-        }
-         
-         
-         
-         
-         
-         
-         */
-
-
         if (Input.GetButtonDown("Fire1"))
         {
-            if(shootTimer > shootRate && magCurrent > 0)
+            if(!isGrappling && shootTimer > shootRate && magCurrent > 0)
             {
                 shoot();
                 updatePlayerUI();
             }
-            else if(shootTimer > shootRate && magCurrent == 0)
+            else if(!isGrappling &&  shootTimer > shootRate && magCurrent == 0)
             {
                 reload();
                 updatePlayerUI();
@@ -177,7 +157,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void jump()
     {
-        if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
+        if (!isMantling && Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             playerVel.y = jumpVel;
             jumpCount++;
@@ -193,6 +173,39 @@ public class playerController : MonoBehaviour, IDamage
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+        }
+    }
+
+    void TryMantle()
+    {
+        Vector3 origin = transform.position + Vector3.up * 1f;
+        Vector3 forward = transform.forward;
+
+        if(Physics.Raycast(origin,forward,out RaycastHit wallHit, mantleCheckDist,mantleLayer))
+        {
+            Vector3 ledgeCheckOrigin = wallHit.point + Vector3.up * mantleHeight;
+            if(Physics.Raycast(ledgeCheckOrigin,Vector3.down,out RaycastHit topHit, mantleHeight, mantleLayer))
+            {
+                isMantling = true;
+                mantleTimer = 0f;
+                mantleStartPos = transform.position;
+                mantleEndPos = new Vector3(topHit.point.x,topHit.point.y +0.1f,topHit.point.z);
+            }
+        }
+    }
+
+    void MantleMove()
+    {
+        mantleTimer += Time.deltaTime;
+        float t = mantleTimer/ mantleDuration;
+        t = Mathf.Clamp01(t);
+        controller.enabled = false;
+        transform.position = Vector3.Lerp(mantleStartPos,mantleEndPos,t);
+
+        if(t >= 1f)
+        {
+            isMantling = false;
+            controller.enabled = true;
         }
     }
 

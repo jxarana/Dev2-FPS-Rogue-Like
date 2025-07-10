@@ -1500,7 +1500,7 @@ MonoBehaviour:
   speed: 5
   sprintMod: 3
   jumpVel: 12
-  jumpMax: 2
+  jumpMax: 1
   gravity: 30
   dashMax: 0
   camPivot: {fileID: 2280021606986667241}
@@ -1512,6 +1512,12 @@ MonoBehaviour:
   shootDist: 12
   magMax: 5
   maxAmmo: 20
+  mantleCheckDist: 1
+  mantleHeight: 1.5
+  mantleDuration: 0.3
+  mantleLayer:
+    serializedVersion: 2
+    m_Bits: 512
   dashSpeed: 0
   dashDuration: 0
   dashCooldown: 0
@@ -1531,8 +1537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2134825230101738570}
   controller: {fileID: 3284863364842925855}
-  arcHeight: 3
-  pullSpeed: 5
+  pullSpeed: 15
   maxGrappleDistance: 40
   player: {fileID: 4905587682686611959}
   lr: {fileID: 2281577027545114239}

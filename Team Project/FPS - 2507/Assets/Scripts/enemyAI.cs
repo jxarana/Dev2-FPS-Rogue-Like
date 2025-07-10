@@ -8,6 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] Animator anim;
 
     [SerializeField] int goldDropped;
     [SerializeField] int HP;
@@ -36,6 +37,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         colorOrg = model.material.color;
+        gameManager.instance.updateGameGoal(0);
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
     }
