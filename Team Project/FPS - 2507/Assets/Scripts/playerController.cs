@@ -84,7 +84,7 @@ public class playerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if(isMantling)
+        if (isMantling)
         {
             MantleMove();
             return;
@@ -342,5 +342,4 @@ public class playerController : MonoBehaviour, IDamage
         xRotation = Mathf.Clamp(xRotation, -60f, 60f);
         camPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
-
 }
