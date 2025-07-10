@@ -2148,7 +2148,7 @@ Transform:
   m_GameObject: {fileID: 8724715533652853607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.41662, y: -0, z: 8.06031}
+  m_LocalPosition: {x: 13.175002, y: -0.00000047683716, z: -28.565075}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2194,6 +2194,7 @@ MonoBehaviour:
   agent: {fileID: 8612520119126565578}
   shootPos: {fileID: 4188377515715764064}
   headPos: {fileID: 3176997715959273163}
+  chestPos: {fileID: 0}
   anim: {fileID: 4436404700428490623}
   goldDropped: 2
   HP: 3
