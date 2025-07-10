@@ -45,6 +45,8 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("Speed", agent.velocity.normalized.magnitude);
+
         if (agent.remainingDistance < 0.01f)
         {
             roamTimer += Time.deltaTime;
@@ -83,7 +85,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        Transform player = gameManager.instance.player.transform;
+        Vector3 targetPos = player.position + Vector3.up * 1f;
+        playerDir = targetPos - headPos.position; 
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         Debug.DrawRay(headPos.position, playerDir);
@@ -162,6 +166,12 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        Transform player = gameManager.instance.player.transform;
+        Vector3 targetPos = player.position + Vector3.up * 1f;
+        Vector3 direction = (targetPos - shootPos.position).normalized;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        Instantiate(bullet, shootPos.position, lookRotation);
     }
 }
