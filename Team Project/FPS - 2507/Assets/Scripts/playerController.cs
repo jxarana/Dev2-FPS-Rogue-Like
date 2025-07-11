@@ -6,6 +6,8 @@ public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
     [SerializeField] LayerMask ignoreLayer;
+    [SerializeField] Transform orientation;
+    [SerializeField] LayerMask wallLayer;
 
     [SerializeField] int HPOrig;
     [SerializeField] int speed;
@@ -16,6 +18,15 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int dashMax;
     [SerializeField] Transform camPivot;
     [SerializeField] float mouseSensitivity = 3f;
+
+    [SerializeField] float climbSpeed;
+    [SerializeField] float maxClimbTime;
+    private float climbTimer;
+
+    [SerializeField] float detectLength;
+    [SerializeField] float sphereCastRadius;
+    [SerializeField] float maxWallLookAngle;
+    private float wallLookAngle;
 
     public int goldCount;
     public int upgradePoints;
@@ -69,7 +80,11 @@ public class playerController : MonoBehaviour, IDamage
 
 
     public bool isGrappling;
-  
+
+    private bool isClimbing;
+    private bool isWallFront;
+    private RaycastHit wallHit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -105,6 +120,31 @@ public class playerController : MonoBehaviour, IDamage
         }
         handleCamera();
 
+        wallCheck();
+        stateMachine();
+
+       
+    }
+
+    private void stateMachine()
+    {
+        if (isWallFront && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
+        {
+            if (!isClimbing && climbTimer > 0)
+                startClimbing();
+
+            if (climbTimer > 0)
+                climbTimer -= Time.deltaTime;
+
+            if (climbTimer < 0)
+                stopClimbing();
+        }
+
+        else
+        {
+            if (isClimbing)
+                stopClimbing();
+        }
     }
 
     void movement()
@@ -163,6 +203,8 @@ public class playerController : MonoBehaviour, IDamage
             }
         }
 
+        if (isClimbing)
+            climbingMovement();
     }
 
     void jump()
@@ -172,6 +214,9 @@ public class playerController : MonoBehaviour, IDamage
             playerVel.y = jumpVel;
             jumpCount++;
         }
+
+        if (isClimbing)
+            climbingMovement();
     }
 
     void sprint()
@@ -353,4 +398,29 @@ public class playerController : MonoBehaviour, IDamage
         camPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
+    private void wallCheck()
+    {
+        isWallFront = Physics.SphereCast(transform.position, sphereCastRadius, orientation.forward, out wallHit, detectLength, wallLayer);
+        wallLookAngle = Vector3.Angle(orientation.forward, -wallHit.normal);
+
+        if (controller.isGrounded)
+        {
+            climbTimer = maxClimbTime;
+        }
+    }
+
+    private void startClimbing()
+    {
+        isClimbing = true;
+    }
+
+    private void climbingMovement()
+    {
+        playerVel = new Vector3(playerVel.y, climbSpeed, playerVel.z);
+    }
+
+    private void stopClimbing()
+    {
+        isClimbing = false;
+    }
 }

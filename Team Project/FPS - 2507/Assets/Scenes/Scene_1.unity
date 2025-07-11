@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Stand (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.2
@@ -5379,6 +5383,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Stand (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15
@@ -9181,6 +9189,10 @@ PrefabInstance:
     - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_Name
       value: Shop Stand (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalScale.x
@@ -19466,6 +19478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Stand (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15
@@ -20832,6 +20848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Stand (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.15
@@ -22007,6 +22027,10 @@ PrefabInstance:
     - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_Name
       value: Shop Stand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866492491175231540, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4975691355116545355, guid: 6d508730e2b261e408ac516bf5d00d28, type: 3}
       propertyPath: m_LocalPosition.x
