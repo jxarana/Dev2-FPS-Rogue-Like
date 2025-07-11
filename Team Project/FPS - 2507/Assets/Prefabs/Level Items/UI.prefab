@@ -3425,6 +3425,7 @@ MonoBehaviour:
   playerDamagePanel: {fileID: 7776057302216842639}
   isPaused: 0
   player: {fileID: 0}
+  enemy: {fileID: 0}
   playerScript: {fileID: 0}
   playerSpawnPoint: {fileID: 0}
   playerPrefab: {fileID: 3523615374131453137, guid: f487c8c9939e95e42abd6fa80df42be5, type: 3}
