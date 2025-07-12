@@ -984,7 +984,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  HPOrig: 5
+  HPOrig: 10
   speed: 5
   sprintMod: 3
   jumpVel: 12
@@ -997,9 +997,9 @@ MonoBehaviour:
   upgradePoints: 0
   shootDamage: 1
   shootRate: 0.25
-  shootDist: 12
+  shootDist: 20
   magMax: 5
-  maxAmmo: 20
+  maxAmmo: 30
   mantleCheckDist: 1
   mantleHeight: 1.5
   mantleDuration: 0.3
